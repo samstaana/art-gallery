@@ -4,8 +4,8 @@ import ButtonBar from './ButtonBar'
 import { useState, useEffect } from "react";
 
 function App() {
-let [date, setData] = useState({})
-let [artId, setArtId] = useState(350000)
+let [data, setData] = useState({})
+let [artId, setArtId] = useState(1522)
 
   {/* State variables here... */}
   useEffect (() => {
@@ -17,10 +17,20 @@ let [artId, setArtId] = useState(350000)
 
   {/* Return to JSX down here... */}
 
+  const handleIterate = (e) => {
+    setArtId(artId + Number(e.target.value))
+  }
+
   return (
     <div className="App">
-      <Gallery />
-      <ButtonBar />
+      <Gallery 
+        primaryImage = { data.primaryImage }
+        artDisplayName = {data.artistDisplayName }
+        title = {data.title }
+        medium = { data.medium }
+        objectId = { data.objectId}
+        culture = { data.culture } />
+      <ButtonBar updateId = { handleIterate } />
     </div>
   );
 }
